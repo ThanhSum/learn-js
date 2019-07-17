@@ -1,0 +1,36 @@
+<section >
+  <h1>Create workflow</h1>
+  <mat-form-field style="width: 100%">
+  <input matInput value="Workflow name">
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>From</mat-label>
+  <mat-select [(ngModel)] = "selectedWorkFlow">
+    <mat-option value="Blank workflow">Blank workflow</mat-option>
+    <mat-optgroup label = "From workflow list">
+      <mat-option *ngFor="let workflow of workFlowList" [value]="workflow.key">
+        {{workflow.value}}
+      </mat-option>
+    </mat-optgroup>
+  </mat-select>
+</mat-form-field>
+
+
+<p>
+  <mat-slide-toggle (click)="toggleStatus()">Requeset assign number to workflow</mat-slide-toggle>
+</p>
+
+<mat-form-field *ngIf= "status" style="width: 100%">
+  <mat-label>Assign numbers</mat-label>
+  <mat-select [formControl]="toppings" multiple>
+    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div fxLayout>
+  <span class="fill-remaining-space"></span>
+  <button mat-button>Close</button>
+  <button mat-raised-button color="primary">Create</button>
+</div>
+</section>
