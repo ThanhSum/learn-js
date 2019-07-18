@@ -278,8 +278,10 @@ var peoples = [
   { name: 'Max', age: 20 },
   { name: 'Jane', age: 20 }
 ];
-const groupedPeople = peoples.reduce((acc, item) => {
-  acc[item.age] = !acc[item.age] ? [item] : 
-  return acc;
+const groupedPeople = peoples.reduce((peopleMap, people) => {
+  peopleMap[people.age] = peopleMap[people.age] || [];
+  peopleMap[people.age].push(people)
+  // peopleMap[people.age] = (peopleMap[people.age] || []).concat(people)
+  return peopleMap;
 }, {});
 console.log(groupedPeople)
