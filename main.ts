@@ -338,7 +338,7 @@ const rsObj = readings.reduce((acc, time) => {
   const minReading = Math.min(...readings);
   acc[`maxReading`] = maxReading;
   acc[`minReading`] = minReading
-return acc;
+  return acc;
 }, {})
 console.log(rsObj)
 
@@ -365,6 +365,6 @@ var pilots = [
   }
 ];
 const totalYears = pilots.reduce((total, pilot) => {
-return total += pilot.years
+  return total += pilot.years
 }, 0)
 console.log(totalYears)
