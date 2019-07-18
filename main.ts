@@ -116,20 +116,40 @@ const countFr2 = flavours.reduce((acc, item) => {
 console.log(countFr2)
 
 // 4.
+
 var voters_ = [
   { name: 'Bob', age: 30, voted: true },
   { name: 'Jake', age: 32, voted: true },
   { name: 'Kate', age: 25, voted: false },
-  { name: 'Sam', age: 20, voted: false },
-  { name: 'Phil', age: 21, voted: true },
-  { name: 'Ed', age: 55, voted: true },
+  { name: 'Sam', age: 19, voted: false },
+  { name: 'Phil', age: 25, voted: true },
+  { name: 'Ed', age: 54, voted: true },
   { name: 'Tami', age: 54, voted: true },
-  { name: 'Mary', age: 31, voted: false },
+  { name: 'Mary', age: 32, voted: false },
   { name: 'Becky', age: 43, voted: false },
-  { name: 'Joey', age: 41, voted: true },
+  { name: 'Joey', age: 43, voted: true },
   { name: 'Jeff', age: 30, voted: true },
   { name: 'Zack', age: 19, voted: false }
 ];
+class AgeCategory {
+  young: number = 0;
+  mid: number = 0
+  old: number = 0;
+}
+const mapVotedtoString = voters_.map(voter => Object.assign(voter, { voted: voter.voted.toString() }))
+const groupedbyAgeRange = voters_.reduce((acc, voter) => {
+  acc[voter.age] = acc[voter.age] || [];
+  acc[voter.age].push(voter)
+  return acc;
+}, {})
+const ageCategory = voters_.reduce((acc, voter) => {
+  acc.young = voter.age < 20 ? acc.young + 1 : acc.young;
+  acc.mid = voter.age > 20 && voter.age <= 40 ? acc.mid + 1 : acc.mid;
+  acc.old = voter.age > 40 ? acc.old + 1 : acc.old;
+  return acc;
+}, new AgeCategory)
+console.log(ageCategory)
+console.log(groupedbyAgeRange)
 const totalVotes = voters_.reduce((acc, item) => {
   if (item.voted) {
     acc++
@@ -279,9 +299,36 @@ var peoples = [
   { name: 'Jane', age: 20 }
 ];
 const groupedPeople = peoples.reduce((peopleMap, people) => {
-  peopleMap[people.age] = peopleMap[people.age] || [];
-  peopleMap[people.age].push(people)
+  peopleMap[people.age] = peopleMap[people.age] || []
+  peopleMap[people.age] = [...peopleMap[people.age], people]
+  // peopleMap[people.age].push(people)
   // peopleMap[people.age] = (peopleMap[people.age] || []).concat(people)
   return peopleMap;
 }, {});
 console.log(groupedPeople)
+
+const data = [
+  { a: 'happy', b: 'robin', c: ['blue', 'green'] },
+  { a: 'tired', b: 'panther', c: ['green', 'black', 'orange', 'blue'] },
+  { a: 'sad', b: 'goldfish', c: ['green', 'red'] }
+];
+const colors = data.reduce((acc, color) => {
+  acc = acc.concat(color.c)
+  return acc;
+}, [])
+console.log(colors)
+const uniqColors = colors.reduce((acc, color) => {
+  if (acc.indexOf(color) === -1) {
+    acc.push(color)
+  }
+  return acc;
+}, [])
+console.log(uniqColors)
+
+const posts = [
+  { id: 1, title: 'Title 1' },
+  { id: 2, title: 'Title 2' }
+];
+const updatedPosts = posts.map(post => post.id === 1 ? Object.assign(post, { title: 'Updated title 1' }) : post)
+console.log(updatedPosts)
+
