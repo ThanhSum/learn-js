@@ -332,3 +332,39 @@ const posts = [
 const updatedPosts = posts.map(post => post.id === 1 ? Object.assign(post, { title: 'Updated title 1' }) : post)
 console.log(updatedPosts)
 
+const readings = [0.3, 1.2, 3.4, 0.2, 3.2, 5.5, 0.4];
+const rsObj = readings.reduce((acc, time) => {
+  const maxReading = Math.max(...readings);
+  const minReading = Math.min(...readings);
+  acc[`maxReading`] = maxReading;
+  acc[`minReading`] = minReading
+return acc;
+}, {})
+console.log(rsObj)
+
+var pilots = [
+  {
+    id: 10,
+    name: "Poe Dameron",
+    years: 14,
+  },
+  {
+    id: 2,
+    name: "Temmin 'Snap' Wexley",
+    years: 30,
+  },
+  {
+    id: 41,
+    name: "Tallissan Lintra",
+    years: 16,
+  },
+  {
+    id: 99,
+    name: "Ello Asty",
+    years: 22,
+  }
+];
+const totalYears = pilots.reduce((total, pilot) => {
+return total += pilot.years
+}, 0)
+console.log(totalYears)
