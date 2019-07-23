@@ -13,3 +13,12 @@ body {
   font-size: 8pt;
   float: right;
 }
+.test-gradient-text{
+  /* standard gradient background */
+  background: linear-gradient(red, blue);
+  font-size: 20px;
+
+  /* clip hackery */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
