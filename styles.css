@@ -7,7 +7,6 @@ body {
 
 .basic-container {
   padding: 30px;
-  background: rgb(5, 48, 68);
 }
 
 .version-info {
@@ -16,7 +15,7 @@ body {
 }
 .test-gradient-text{
   /* standard gradient background */
-  background: linear-gradient(yellow, orange, orangered);
+  background: linear-gradient(#0288D1, #01579B);
   font-size: 50px;
   text-align: center;
   /* clip hackery */
