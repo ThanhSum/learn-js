@@ -1,3 +1,4 @@
+import {Injectable} from '@angular/core'
 // Performance with list transformers
 let bigData = [];
 for (let i = 0; i < 1000000; i++) {
@@ -56,8 +57,6 @@ const countVotes = voters.reduce((acc, voter) => {
   return acc;
 }, new CountVote());
 
-console.log(countVotes);
-
 // 2.
 class CountColor {
   white: number = 0;
@@ -80,7 +79,6 @@ const count = iceCreams.reduce((countColor: CountColor, iceCream) => {
   countColor.yellow = iceCream.color === 'yelllow' ? countColor.yellow + 1 : countColor.yellow
   return countColor;
 }, new CountColor());
-console.log(count)
 
 // 3. 
 const flavours = [
@@ -107,14 +105,11 @@ const countFr = flavours.reduce((countFruit: CountFruit, fruit) => {
   countFruit.mango = fruit === "mango" ? countFruit.mango + 1 : countFruit.mango;
   return countFruit;
 }, new CountFruit)
-console.log(countFr);
 
 const countFr2 = flavours.reduce((acc, item) => {
   acc[item] = !acc[item] ? acc[item] = 1 : acc[item] + 1
   return acc;
 }, {})
-console.log(countFr2)
-
 // 4.
 
 var voters_ = [
@@ -148,15 +143,12 @@ const ageCategory = voters_.reduce((acc, voter) => {
   acc.old = voter.age > 40 ? acc.old + 1 : acc.old;
   return acc;
 }, new AgeCategory)
-console.log(ageCategory)
-console.log(groupedbyAgeRange)
 const totalVotes = voters_.reduce((acc, item) => {
   if (item.voted) {
     acc++
   }
   return acc;
 }, 0);
-console.log(totalVotes)
 
 // 5.
 var wishlist = [
@@ -186,7 +178,6 @@ const countLetters = string => {
     return acc
   }, {})
 }
-console.log(countLetters('abbcccddddeeeeeahdhdaabbcc'))
 
 // 8. 
 const input = ['Steve', 'Sally', 'George', 'Gina'];
@@ -224,7 +215,6 @@ const sumW = animals.reduce((total, animal) => {
   total += animal.weight;
   return total
 }, 0);
-console.log(sumW)
 
 // 10. find allBooks
 var friends = [{
@@ -244,7 +234,6 @@ const allBooks = friends.reduce((acc, item) => {
   acc = acc.concat(item.books)
   return acc;
 }, ['Alphabet']);
-console.log(allBooks);
 
 // 11. Count Names
 var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
@@ -252,7 +241,6 @@ const countNames = names.reduce((acc, name) => {
   acc[name] = acc.hasOwnProperty(name) ? acc[name] + 1 : 1
   return acc;
 }, {});
-console.log(countNames)
 
 // 12. Remove duplicate in Arrray;
 var myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
@@ -262,7 +250,6 @@ const uniqArr = myArray.reduce((acc, item) => {
   }
   return acc;
 }, []);
-console.log(uniqArr)
 
 // 13.
 const topics = [
@@ -285,12 +272,10 @@ const allPosts = topics.reduce((acc, item) => {
   acc = acc.concat(item.posts)
   return acc;
 }, []);
-console.log(allPosts);
 const dictionary = allPosts.reduce((acc, item) => {
   acc[item.postID] = item;
   return acc;
 }, {})
-console.log(dictionary)
 
 // 14. Nhom cac doi tuong theo thuoc tinh;
 var peoples = [
@@ -305,7 +290,6 @@ const groupedPeople = peoples.reduce((peopleMap, people) => {
   // peopleMap[people.age] = (peopleMap[people.age] || []).concat(people)
   return peopleMap;
 }, {});
-console.log(groupedPeople)
 
 const data = [
   { a: 'happy', b: 'robin', c: ['blue', 'green'] },
@@ -316,21 +300,18 @@ const colors = data.reduce((acc, color) => {
   acc = acc.concat(color.c)
   return acc;
 }, [])
-console.log(colors)
 const uniqColors = colors.reduce((acc, color) => {
   if (acc.indexOf(color) === -1) {
     acc.push(color)
   }
   return acc;
 }, [])
-console.log(uniqColors)
 
 const posts = [
   { id: 1, title: 'Title 1' },
   { id: 2, title: 'Title 2' }
 ];
 const updatedPosts = posts.map(post => post.id === 1 ? Object.assign(post, { title: 'Updated title 1' }) : post)
-console.log(updatedPosts)
 
 const readings = [0.3, 1.2, 3.4, 0.2, 3.2, 5.5, 0.4];
 const rsObj = readings.reduce((acc, time) => {
@@ -340,7 +321,6 @@ const rsObj = readings.reduce((acc, time) => {
   acc[`minReading`] = minReading
   return acc;
 }, {})
-console.log(rsObj)
 
 var pilots = [
   {
@@ -367,4 +347,4 @@ var pilots = [
 const totalYears = pilots.reduce((total, pilot) => {
   return total += pilot.years
 }, 0)
-console.log(totalYears)
+
