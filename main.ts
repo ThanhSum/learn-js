@@ -348,3 +348,10 @@ const totalYears = pilots.reduce((total, pilot) => {
   return total += pilot.years
 }, 0)
 
+let total = 0;
+let countN = 1;
+while (countN <= 10){
+  total += countN
+  countN += 1;
+}
+console.log(total)
