@@ -1,4 +1,6 @@
-import {Injectable} from '@angular/core'
+import {Injectable} from '@angular/core';
+import moment from 'moment';
+
 // Performance with list transformers
 let bigData = [];
 for (let i = 0; i < 1000000; i++) {
@@ -348,10 +350,53 @@ const totalYears = pilots.reduce((total, pilot) => {
   return total += pilot.years
 }, 0)
 
-let total = 0;
-let countN = 1;
-while (countN <= 10){
-  total += countN
-  countN += 1;
+class FooBase {
+  x: number = 3;
+  private y: number = 4;
+  protected z: number = 5;
 }
-console.log(sum(range(1, 10)));
+// Effect on Instances
+let foo = new FooBase();
+console.log(foo.x); //OK
+// foo.y, foo.z => ERROR
+
+// Effect on Child Classes
+class FooChild extends FooBase {
+  constructor(){
+    super();
+    console.log(this.z) // 
+  }
+}
+
+class Animal {
+  name: string;
+  constructor(name: string){
+    this.name = name;
+  }
+
+  move(meters: number = 0){
+    return `${this.name} moved ${meters} m.`
+  }
+}
+
+class Snack extends Animal {
+  constructor(name: string){
+    super(name)
+  }
+ 
+  move(meters = 5){
+    return super.move(meters)
+  }
+}
+
+let meo = new Animal('Meo');
+console.log(meo.move(77));
+
+let snack = new Snack('Snack');
+console.log(snack.move())
+
+class Human {
+  constructor(public name: string){
+    this.name = name
+  }
+}
