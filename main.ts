@@ -354,4 +354,4 @@ while (countN <= 10){
   total += countN
   countN += 1;
 }
-console.log(total)
+console.log(sum(range(1, 10)));
