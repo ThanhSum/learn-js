@@ -543,4 +543,13 @@ class ChildB extends ParentB{
 }
 var b= new ChildB();
 let arr = [2,3,4];
-of(arr).subscribe(rs => console.log(rs))
+of(arr).subscribe(rs => console.log(rs));
+
+class Book {
+  title: string;
+  author: string;
+}
+let book = new Book();
+book.author ='Name';
+book.title='Title';
+console.log(book)
