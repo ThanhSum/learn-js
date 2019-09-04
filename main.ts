@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import moment from 'moment';
+import { of } from 'rxjs/observable/of';
 
 // Performance with list transformers
 let bigData = [];
@@ -459,7 +460,7 @@ class Hourse extends Animal3 {
 let sam = new Snacke('Sam the Python');
 let tom = new Hourse('Tommy the Palomino');
 
-console.log(tom.move(400))
+// console.log(tom.move(400))
 
 
 const fullNameMaxLength = 10;
@@ -479,5 +480,67 @@ class Employee {
   }
 };
 let employee = new Employee();
-employee.fullName = "kdsakdsa";
-console.log(employee.fullName)
+employee.fullName = "Big babol";
+// console.log(employee.fullName);
+class Foo {
+  x: number;
+  y: number;
+  constructor(a, b){
+    this.x = a;
+    this.y = b;
+  }
+
+  gimmeXY(){
+    return this.x * this.y;
+  }
+}
+var f = new Foo(5, 15);
+
+class Bar extends Foo {
+  z: number;
+  constructor(a,b,c){
+    super(a,b);
+    this.z = c;
+  }
+  gimmeXY(){
+    return super.gimmeXY() + this.z
+  }
+ 
+}
+let bar = new Bar(100, 200, 300);
+console.log(bar.gimmeXY())
+
+class ParentA{
+  id: string;
+  constructor(){
+    this.id = 'A'
+  }
+  foo(){
+    console.log('ParentA:', this.id)
+  }
+}
+
+class ParentB{
+  id: string;
+  constructor(){
+    this.id = 'B'
+  }
+  foo(){
+    console.log('ParentB:', this.id)
+  }
+}
+
+class ChildA extends ParentA{
+  foo(){
+    super.foo();
+  }
+}
+
+class ChildB extends ParentB{
+  foo(){
+    super.foo();
+  }
+}
+var b= new ChildB();
+let arr = [2,3,4];
+of(arr).subscribe(rs => console.log(rs))
