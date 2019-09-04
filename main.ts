@@ -542,14 +542,22 @@ class ChildB extends ParentB{
   }
 }
 var b= new ChildB();
-let arr = [2,3,4];
-of(arr).subscribe(rs => console.log(rs));
 
 class Book {
   title: string;
   author: string;
+  constructor(obj?){
+    Object.assign(this, obj)
+  }
 }
+
 let book = new Book();
 book.author ='Name';
 book.title='Title';
-console.log(book)
+console.log(book instanceof Book);
+
+let boook = {
+  title: 'TTTT',
+  author: 'AAA'
+} as Book
+console.log(boook instanceof Book)
