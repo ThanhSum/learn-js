@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import moment from 'moment';
 
 // Performance with list transformers
@@ -362,7 +362,7 @@ console.log(foo.x); //OK
 
 // Effect on Child Classes
 class FooChild extends FooBase {
-  constructor(){
+  constructor() {
     super();
     console.log(this.z) // 
   }
@@ -370,21 +370,21 @@ class FooChild extends FooBase {
 
 class Animal {
   name: string;
-  constructor(name: string){
+  constructor(name: string) {
     this.name = name;
   }
 
-  move(meters: number = 0){
+  move(meters: number = 0) {
     return `${this.name} moved ${meters} m.`
   }
 }
 
 class Snack extends Animal {
-  constructor(name: string){
+  constructor(name: string) {
     super(name)
   }
- 
-  move(meters = 5){
+
+  move(meters = 5) {
     return super.move(meters)
   }
 }
@@ -396,7 +396,88 @@ let snack = new Snack('Snack');
 console.log(snack.move())
 
 class Human {
-  constructor(public name: string){
+  constructor(public name: string) {
     this.name = name
   }
 }
+
+class Greeter {
+
+  constructor(public greeting: string) {
+    this.greeting = greeting;
+  }
+
+  greet() {
+    return 'Hello' + this.greeting;
+  }
+};
+let greeter = new Greeter('World');
+
+class Animal2 {
+  move(distanceInMeters = 0) {
+    console.log(`Animal moved ${distanceInMeters} m.`)
+  }
+};
+
+class Dog extends Animal2 {
+
+  bark() {
+    console.log('Woof! Woof');
+  }
+}
+const dog = new Dog();
+console.log(dog.move(500));
+
+class Animal3 {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  move(distanceInMeters = 0) {
+    console.log(`${this.name} moved ${distanceInMeters} m.`)
+  }
+}
+
+class Snacke extends Animal3 {
+  constructor(name) {
+    super(name);
+  }
+  move(distance = 5) {
+    console.log('Slithering')
+    super.move(distance)
+  }
+}
+
+class Hourse extends Animal3 {
+  constructor(name) {
+    super(name);
+  }
+  move(distanceInMeters = 45) {
+    console.log(`${this.name} moved ${distanceInMeters} m.`)
+  }
+}
+let sam = new Snacke('Sam the Python');
+let tom = new Hourse('Tommy the Palomino');
+
+console.log(tom.move(400))
+
+
+const fullNameMaxLength = 10;
+class Employee {
+  private _fullName: string;
+
+  get fullName(): string {
+    return this._fullName;
+  }
+
+  set fullName(name: string) {
+    if (name && name.length > fullNameMaxLength) {
+      throw new Error('fullName has max length of' + fullNameMaxLength)
+    }
+    this._fullName = name;
+
+  }
+};
+let employee = new Employee();
+employee.fullName = "kdsakdsa";
+console.log(employee.fullName)
